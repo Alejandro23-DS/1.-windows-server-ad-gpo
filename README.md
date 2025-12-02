@@ -8,15 +8,15 @@ Este proyecto documenta la instalación, configuración y administración de **W
 
 Objetivos
 
-Configurar un dominio en Windows Server
-Crear y organizar Unidades Organizativas (OUs)
-Administrar usuarios y grupos
-Implementar políticas de seguridad mediante GPO
-Documentar buenas prácticas en un entorno empresarial
+- Configurar un dominio en Windows Server
+- Crear y organizar Unidades Organizativas (OUs)
+- Administrar usuarios y grupos
+- Implementar políticas de seguridad mediante GPO
+- Documentar buenas prácticas en un entorno empresarial
 
 Tecnologías
 
-Windows Server 2016/2019
-Active Directory Domain Services
-Group Policy Management
-PowerShell
+- Windows Server 2016/2019
+- Active Directory Domain Services
+- Group Policy Management
+- PowerShell
