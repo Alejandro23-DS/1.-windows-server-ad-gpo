@@ -1,4 +1,4 @@
-Active Directory + GPO + Gestión de Usuarios  
+Proyecto de implementación de Active Directory y GPO para entorno educativo.
 Este proyecto documenta la instalación, configuración y administración de **Windows Server 2022** para un entorno básico de dominio, incluyendo:
 
 - Active Directory Domain Services (AD DS)
