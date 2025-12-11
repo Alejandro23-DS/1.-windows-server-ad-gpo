@@ -112,5 +112,6 @@ Se validó que la política esté correctamente vinculada y que se aplique únic
 
 ## 8. Material de apoyo
 Todos los archivos multimedia se encuentran en la carpeta:
+/screenshots/
 
 
