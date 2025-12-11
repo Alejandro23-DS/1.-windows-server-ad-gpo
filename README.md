@@ -2,17 +2,15 @@
 
 Repositorio con toda la configuración realizada en Windows Server 2022, incluyendo:
 
-###Instalación de AD DS y DNS
+Administración de Active Directory
 
-### Creación de dominio
+Gestión de usuarios y grupos
 
-### Organización con OU
+Organización mediante OU
 
-### Creación de usuarios y grupos
+Implementación de políticas de seguridad
 
-### Implementación de GPO (bloqueo de USB, acceso a almacenamiento, restricciones de navegación, etc.)
-
-### Evidencias mediante capturas de pantalla
+Buenas prácticas en entornos Windows Server
 
 📂 Estructura del repositorio
 /
