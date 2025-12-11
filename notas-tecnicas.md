@@ -1,4 +1,4 @@
-##Implementación de Active Directory, Gestión de Usuarios y Configuración de GPO en Windows Server##
+## Implementación de Active Directory, Gestión de Usuarios y Configuración de GPO en Windows Server ##
 
 ## 1. Introducción
 El presente informe detalla el proceso de instalación, configuración y administración de un dominio en Windows Server 2016, incluyendo:
