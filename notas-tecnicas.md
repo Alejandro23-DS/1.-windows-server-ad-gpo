@@ -1,7 +1,7 @@
 Implementación de Active Directory, Gestión de Usuarios y Configuración de GPO en Windows Server
 
 ## 1. Introducción
-El presente informe detalla el proceso de instalación, configuración y administración de un dominio en **Windows Server 2016**, incluyendo:
+El presente informe detalla el proceso de instalación, configuración y administración de un dominio en Windows Server 2016, incluyendo:
 
 - Implementación de **Active Directory Domain Services (AD DS)** y **DNS**  
 - Verificación del dominio y propiedades  
@@ -97,7 +97,7 @@ Se configuraron los siguientes parámetros:
 Se validó que la política esté correctamente vinculada y que se aplique únicamente a la OU correspondiente.
 
 ### Figura 13. Resultado final de la GPO
-![Verificar GPO](./screenshots/13-GPMC-Verificación-GPO-Vinculada.png)
+![Verificar GPO](./screenshots/13-GPMC-Verificacion-GPO-Vinculada.png)
 
 ---
 
