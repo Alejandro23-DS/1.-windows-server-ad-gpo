@@ -53,8 +53,9 @@ La estructura incluye:
 ### Figura 6. OU Administrativos
 ![OU Administrativos](./screenshots/06-ADUC-OU-Administrativos-Vacia.png)
 
-### Figura 7. Usuarios Estudiantes
-![Estudiantes](./screenshots/07-ADUC-OU-Estudiantes-Usuarios.png)
+### Figura 7. OU Estudiantes – Usuarios creados
+![OU Estudiantes](./screenshots/07-ADUC-OU-Estudiantes-Usuarios.png)
+
 
 ### Figura 8. Usuarios y grupos Docentes
 ![Docentes](./screenshots/08-ADUC-OU-Docentes-Usuarios-Grupos.png)
