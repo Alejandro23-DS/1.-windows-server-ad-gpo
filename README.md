@@ -1,139 +1,133 @@
-# Active Directory – Gestión de Usuarios, Grupos y GPO #
+# Active Directory – Gestión de Usuarios, Grupos y GPO
 
-Repositorio con toda la configuración realizada en Windows Server 2022, incluyendo:
+Repositorio con toda la configuración realizada en **Windows Server 2022**, incluyendo:
 
-Administración de Active Directory
+- Administración de Active Directory  
+- Gestión de usuarios y grupos  
+- Organización mediante OU  
+- Implementación de políticas de seguridad  
+- Buenas prácticas en entornos Windows Server  
 
-Gestión de usuarios y grupos
+---
 
-Organización mediante OU
+## 📂 Estructura del repositorio
 
-Implementación de políticas de seguridad
-
-Buenas prácticas en entornos Windows Server
-
-📂 Estructura del repositorio
 /
-├── screenshots/        # Capturas de pantalla usadas en el informe
-├── usuarios-grupos/    # Documentación de OUs, usuarios y grupos creados
-├── gpo/                # Documentación de políticas aplicadas
-├── notas-tecnicas.md   # Explicaciones adicionales
-└── README.md           # Este archivo
+├── screenshots/ # Capturas de pantalla usadas en el informe
+├── usuarios-grupos/ # Documentación de OUs, usuarios y grupos creados
+├── gpo/ # Documentación de políticas aplicadas
+├── notas-tecnicas.md # Explicaciones adicionales
+└── README.md # Este archivo
 
-🏗️ 1. Instalación de Active Directory y DNS
 
-Se documenta la instalación del rol AD DS y DNS, la promoción del servidor y la creación del dominio:
+---
+
+## 🏗️ 1. Instalación de Active Directory y DNS
+
+Se documenta la instalación de los roles **AD DS** y **DNS**, la promoción del servidor y la creación del dominio:
 
 colegiodm.local
 
 
 Incluye:
 
-Roles instalados
+- Roles instalados  
+- Comprobación de AD DS  
+- Nivel funcional del dominio  
+- Nivel funcional del bosque  
 
-Comprobación de AD DS
+---
 
-Nivel funcional del dominio
-
-Nivel funcional del bosque
-
-🗂️ 2. Estructura Organizacional (OU)
+## 🗂️ 2. Estructura Organizacional (OU)
 
 Se creó una estructura ordenada para la administración:
 
-AulaComputo
-
-Administrativos
-
-Estudiantes
-
-Docentes
-
-Grupos vinculados a cada área
+- AulaComputo  
+- Administrativos  
+- Estudiantes  
+- Docentes  
+- Grupos vinculados a cada área  
 
 Incluye:
 
-Usuarios organizados
+- Usuarios organizados  
+- Grupos (Docentes-Matemática, Docentes-Ciencias, Estudiantes-Aula, etc.)  
 
-Grupos (Docentes-Matemática, Docentes-Ciencias, Estudiantes-Aula, etc.)
+---
 
-👥 3. Creación de Usuarios y Grupos
+## 👥 3. Creación de Usuarios y Grupos
 
 Cada OU contiene sus usuarios correspondientes.
 
 Se incluyen:
 
-Nombre del usuario
+- Nombre del usuario  
+- Usuario de inicio de sesión  
+- (Las contraseñas administrativas no se muestran en capturas por seguridad)  
+- Grupos creados manualmente  
+- Evidencias mediante capturas  
 
-Usuario de inicio de sesión
+---
 
-Contraseñas administrativas (no visibles en capturas)
+## 🛑 4. Políticas de Grupo (GPO)
 
-Grupos creados manualmente
+En la carpeta **/gpo** se muestran las políticas implementadas:
 
-Capturas que evidencian el proceso
-
-🛑 4. Políticas de Grupo (GPO)
-
-En la carpeta /gpo se muestra:
-
-✔ Bloqueo de USB
-
+### ✔ Bloqueo de USB  
 Evita que dispositivos USB no autorizados sean usados.
 
-✔ Restricción de almacenamiento extraíble
+### ✔ Restricción de almacenamiento extraíble  
+Limita acceso a unidades externas.
 
-Limita acceso a discos externos.
+### ✔ Control de navegación básica  
+Ejemplo: impedir descargas o restringir navegadores.
 
-✔ Control de navegación básica
+### ✔ Verificación de GPO vinculada  
+Captura final que demuestra la aplicación correcta.
 
-(Ejemplo: impedir descargas, navegadores específicos o IE configurado)
+---
 
-✔ Verificación de GPO vinculado
+## 📸 5. Capturas de pantalla
 
-Captura final comprobando la vinculación correcta.
-
-📸 5. Capturas de pantalla
-
-Todas las imágenes están en:
+Todas las imágenes se encuentran en la carpeta:
 
 /screenshots
 
-Con nombres ordenados para referencia, por ejemplo:
 
-01-Panel-RolesInstalados.png
-02-Asistente-ConfirmacionRolesADDS-DNS.png
-...
-13-GPMC-Verificacion-GPO-Vinculada.png
+Con nombres ordenados, por ejemplo:
 
-📝 6. Documentación técnica adicional
+- 01-Panel-RolesInstalados.png  
+- 02-Asistente-ConfirmacionRolesADDS-DNS.png  
+- …  
+- 13-GPMC-Verificacion-GPO-Vinculada.png  
 
-En:
+---
+
+## 📝 6. Documentación técnica adicional
+
+Archivo:
 
 notas-tecnicas.md
 
-Incluye resúmenes de:
 
-Qué es AD DS
+Incluye explicaciones sobre:
 
-Qué es un dominio
+- Qué es AD DS  
+- Qué es un dominio  
+- Cómo funcionan las OU  
+- Qué es una GPO y cómo se aplica  
+- Buenas prácticas básicas de administración  
 
-Cómo funcionan las OU
+---
 
-Qué es una GPO y cómo se aplica
+## 🎯 Objetivo del proyecto
 
-Buenas prácticas básicas de administración
+Este repositorio busca demostrar habilidades en:
 
-🎯 Objetivo del proyecto
+- Administración de Active Directory  
+- Gestión de usuarios y grupos  
+- Organización mediante OU  
+- Implementación de políticas de seguridad  
+- Buenas prácticas en entornos Windows Server  
 
-Demostrar las capacidades de:
-
-Administración de Active Directory
-
-Gestión de usuarios y grupos
-
-Organización mediante OU
-
-Implementación de políticas de seguridad
-
-Buenas prácticas en entornos Windows Server
+---
