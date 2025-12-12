@@ -1,6 +1,6 @@
 # 👥 Estructura y Diseño de Active Directory
 
-El diseño de las Unidades Organizativas (OU) del dominio fue implementado para facilitar la aplicación granular de Políticas de Grupo (GPO) y la delegación de administración.
+El diseño de las Unidades Organizativas (OU) del dominio fue implementado para facilitar la aplicación de Políticas de Grupo (GPO) y la delegación de administración.
 
 ## 1. Jerarquía de Unidades Organizativas
 
