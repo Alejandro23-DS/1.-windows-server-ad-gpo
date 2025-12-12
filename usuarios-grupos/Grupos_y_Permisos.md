@@ -2,7 +2,7 @@
 
 ***
 
-**⚠️ ESTADO:** Este documento detalla el plan de diseño de seguridad que se debe implementar en Active Directory (ADUC). La creación física de estos grupos está **pendiente de finalización**.
+⚠️Este documento detalla el plan de diseño de seguridad que se debe implementar en Active Directory (ADUC). La creación física de estos grupos está **pendiente de finalización**.
 
 ***
 
