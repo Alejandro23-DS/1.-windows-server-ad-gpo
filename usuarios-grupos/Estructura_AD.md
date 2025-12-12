@@ -26,7 +26,7 @@ La vista general del dominio (`colegiodm`) muestra las OUs principales.
     ![OU Administrativos](../screenshots/06-ADUC-OU-Administrativos-Vacia.png)
 
 * **Estudiantes:** Contiene las cuentas de usuario de los estudiantes. (Aquí se aplica la GPO de Bloqueo USB).
-    ![OU Estudiantes](../screenshots/07-ADUC-OU-Estudiantes-Usuarios.png)
+    ![OU Estudiantes](../screenshots/07-ADUC-OU-Estudiantes-Usuarios..png)
 
 * **Docentes:** Contiene cuentas de docentes y sus grupos de seguridad asociados.
     ![OU Docentes](../screenshots/08-ADUC-OU-Docentes-Usuarios-Grupos.png)
