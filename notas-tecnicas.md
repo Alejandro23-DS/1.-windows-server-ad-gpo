@@ -1,118 +1,54 @@
-## Implementación de Active Directory, Gestión de Usuarios y Configuración de GPO en Windows Server ##
+# Notas Técnicas y Fundamentos del Proyecto
 
-## 1. Introducción
-El presente informe detalla el proceso de instalación, configuración y administración de un dominio en Windows Server 2016, incluyendo:
-
-- Implementación de **Active Directory Domain Services (AD DS)** y **DNS**  
-- Verificación del dominio y propiedades  
-- Creación de la estructura organizativa (OU)  
-- Gestión de usuarios y grupos  
-- Configuración y aplicación de **Políticas de Grupo (GPO)**, incluyendo el bloqueo de dispositivos USB  
-- Validación de la aplicación de políticas
-
-Toda la documentación incluye capturas de pantalla almacenadas en la carpeta `screenshots/` del repositorio.
+Este documento proporciona el contexto teórico y las explicaciones técnicas detrás de la configuración y el diseño implementado en el dominio *colegiodm.local*. Sirve como manual conceptual para comprender el porqué de la estructura del proyecto.
 
 ---
 
-## 2. Instalación de AD DS y DNS
+## 1. Fundamentos de Active Directory Domain Services (AD DS)
 
-Se instaló el rol **Active Directory Domain Services (AD DS)** junto con el rol DNS necesario para la resolución interna del dominio.
+### 1.1 ¿Qué es AD DS?
 
-### Figura 1. Roles instalados
-![Roles Instalados](./screenshots/01-Panel-RolesInstalados.png)
+Active Directory Domain Services (Servicios de Dominio de Active Directory) es un servicio de directorio jerárquico y distribuido que se ejecuta en Windows Server. Su propósito principal es la administración centralizada de los recursos de red, la seguridad, las identidades y los permisos. Actúa como la base de datos de la organización.
 
-### Figura 2. Asistente de instalación AD DS + DNS
-![Asistente AD DS](./screenshots/02-Asistente-ConfirmacionRolesADDS-DNS.png)
+* **Función Clave:** Permite la autenticación (verificar la identidad de un usuario) y la autorización (determinar qué puede hacer el usuario) en la red.
 
----
 
-## 3. Verificación del Dominio y Controladores
+### 1.2 El Dominio y el Bosque
 
-Una vez instalado AD DS, se verificó la configuración del dominio **colegiodm.local**, incluyendo los niveles funcionales del bosque y del dominio.
-
-### Figura 3. Propiedades del dominio
-![Propiedades del Dominio](./screenshots/04-Propiedades-Dominio-colegiodm.png)
-
-### Figura 4. Controladores del dominio
-![Controladores](./screenshots/05-ADUC-ControladoresDominio.png)
+* **Dominio:** Es la frontera administrativa y de seguridad principal. En este proyecto, el dominio es **`colegiodm.local`**. Todos los usuarios, grupos y equipos de este dominio comparten una política de seguridad común.
+* **Bosque (Forest):** Es la colección de uno o más dominios que comparten un esquema (definiciones de clases y atributos de objetos), configuración y catálogo global. Es el límite superior de la estructura de AD.
 
 ---
 
-## 4. Creación de Estructura Organizativa (OU)
+## 2. Unidades Organizativas (OU)
 
-Se diseñó una estructura ordenada para gestionar usuarios y políticas de manera eficiente.  
+### 2.1 Propósito de las OU
 
-La estructura incluye:
-- OU **Administrativos**
-- OU **Docentes** (con grupos asociados)
-- OU **Estudiantes**
+Las Unidades Organizativas (OU) son contenedores lógicos dentro de un dominio que permiten crear una *jerarquía administrativa organizada*. No son un límite de seguridad estricto, pero son cruciales para dos tareas:
 
-### Figura 5. OUs principales creadas
-![OU Base](./screenshots/03-ADUC-OU-Base-Creadas.png)
+1.  **Delegación de Control:** Permiten delegar tareas administrativas a usuarios o grupos específicos (por ejemplo, permitir que un administrador local gestione solo las cuentas en la OU `Docentes`).
+2.  **Aplicación de GPO:** Son el nivel más bajo al que se pueden vincular las Políticas de Grupo (GPO), permitiendo aplicar reglas específicas solo a un subconjunto de usuarios o equipos.
 
-### Figura 6. OU Administrativos
-![OU Administrativos](./screenshots/06-ADUC-OU-Administrativos-Vacia.png)
+### 2.2 Diseño de Segmentación
 
-### Figura 7. OU Estudiantes – Usuarios creados
-![OU Estudiantes](./screenshots/07-ADUC-OU-Estudiantes-Usuarios..png)
+El diseño de OUs (`Administrativos`, `Docentes`, `Estudiantes`) facilita la **segmentación de políticas**.
 
-
-### Figura 8. Usuarios y grupos Docentes
-![Docentes](./screenshots/08-ADUC-OU-Docentes-Usuarios-Grupos.png)
+* **Ejemplo:** La GPO de Bloqueo USB se aplica exclusivamente a la OU `Estudiantes`. Si se hubiera aplicado al nivel de Dominio, también afectaría a `Docentes` y `Administrativos`, lo cual no es deseado.
 
 ---
 
-## 5. Implementación de GPO: Bloqueo de dispositivos USB
+## 3. Políticas de Grupo (GPO)
 
-Se creó una política de seguridad aplicada específicamente a la OU **Estudiantes**, destinada a **bloquear completamente el acceso a dispositivos de almacenamiento USB**.
+### 3.1 Fundamentos de GPO
 
-### 5.1 Creación de la GPO
-La política fue creada desde la consola de administración de directivas de grupo (GPMC).
+Una Política de Grupo (GPO) es un conjunto de reglas y configuraciones que se aplican a usuarios o equipos. El procesamiento de las GPO sigue un orden estricto conocido como **L-S-D-O**:
 
-### Figura 9. Crear GPO — Bloqueo USB
-![Crear GPO USB](./screenshots/09-GPMC-Crear-GPO-BloqueoUSB.png)
+1.  **Local:** Políticas aplicadas al equipo local.
+2.  **Sitio (Site):** Políticas aplicadas a la ubicación física (Sitio de AD).
+3.  **Dominio (Domain):** Políticas aplicadas a todo el dominio.
+4.  **OU (Unidad Organizativa):** Políticas aplicadas a la OU específica. (El último en aplicarse tiene prioridad).
 
----
+### 3.2 La GPO de Bloqueo USB
 
-## 5.2 Configuración de la GPO
-
-Se configuraron los siguientes parámetros:
-
-- **Computer Configuration → Administrative Templates → System → Removable Storage Access**
-- “**Deny all access**” habilitado
-- Aplicación solo para equipos dentro de la OU Estudiantes
-
-### Figura 10. GPO vinculada a Estudiantes
-![GPO Vinculada](./screenshots/10-GPMC-GPO-Vinculada-Estudiantes.png)
-
-### Figura 11. Edición de la política — Almacenamiento extraíble
-![Editar GPO](./screenshots/11-GPMC-Editar-AccesoAlmacenamientoExtraible.png)
-
-### Figura 12. Denegar acceso total
-![Denegar USB](./screenshots/12-GPMC-Configurar-DenegarAccesoTotal.png)
-
----
-
-## 6. Verificación de la aplicación de la política
-
-Se validó que la política esté correctamente vinculada y que se aplique únicamente a la OU correspondiente.
-
-### Figura 13. Resultado final de la GPO
-![Verificar GPO](./screenshots/13-GPMC-Verificacion-GPO-Vinculada.png)
-
----
-
-## 7. Conclusiones
-
-- El dominio **colegiodm.local** quedó correctamente implementado y operativo.  
-- La estructura de OUs facilita la administración del personal y estudiantes.  
-- La GPO de bloqueo USB fue configurada y aplicada exitosamente para reforzar la seguridad.  
-- La documentación generada permite auditoría, mantenimiento y futuras mejoras en la infraestructura.
-
----
-
-## 8. Material de apoyo
-Todos los archivos multimedia se encuentran en la carpeta:
-/screenshots/
-
+Esta GPO fue configurada como una medida de *seguridad preventiva* crítica.
 
