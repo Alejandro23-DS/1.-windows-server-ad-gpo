@@ -1,133 +1,71 @@
-# Active Directory – Gestión de Usuarios, Grupos y GPO
+# Active Directory (AD) & Group Policy Management (GPO) Project
 
-Repositorio con toda la configuración realizada en **Windows Server 2022**, incluyendo:
+Este repositorio documenta la configuración completa de un entorno de Active Directory implementado sobre **Windows Server 2022**. El objetivo es demostrar habilidades en la gestión de identidades, la organización jerárquica y la implementación de políticas de seguridad.
 
-- Administración de Active Directory  
-- Gestión de usuarios y grupos  
-- Organización mediante OU  
-- Implementación de políticas de seguridad  
-- Buenas prácticas en entornos Windows Server  
+## 🎯 Objetivo Principal
 
----
+El proyecto busca demostrar las habilidades en:
 
-## 📂 Estructura del repositorio
-
-/
-├── screenshots/ # Capturas de pantalla usadas en el informe
-├── usuarios-grupos/ # Documentación de OUs, usuarios y grupos creados
-├── gpo/ # Documentación de políticas aplicadas
-├── notas-tecnicas.md # Explicaciones adicionales
-└── README.md # Este archivo
-
+* Diseño e implementación de la infraestructura de Active Directory Domain Services (AD DS).
+* Gestión de usuarios, grupos y Unidades Organizativas (OU).
+* Aplicación de políticas de seguridad a través de GPO.
+* Documentación de buenas prácticas en la administración de entornos Windows Server.
 
 ---
 
-## 🏗️ 1. Instalación de Active Directory y DNS
+## 📂 Estructura del Repositorio
 
-Se documenta la instalación de los roles **AD DS** y **DNS**, la promoción del servidor y la creación del dominio:
-
-colegiodm.local
-
-
-Incluye:
-
-- Roles instalados  
-- Comprobación de AD DS  
-- Nivel funcional del dominio  
-- Nivel funcional del bosque  
+| Directorio / Archivo | Contenido y Propósito |
+| :--- | :--- |
+| **`screenshots/`** | Imágenes ordenadas que documentan cada paso de la configuración. |
+| **`gpo/`** | Documentación y plan de diseño de las Políticas de Grupo (GPO) implementadas. |
+| **`usuarios-grupos/`** | Documentación del plan de diseño de OUs, usuarios y grupos de seguridad. |
+| **`notas-tecnicas.md`** | Explicaciones teóricas y conceptuales sobre AD DS, dominios, OUs y GPO. |
+| `README.md` | (Este archivo) Visión general y un índice de todo el proyecto. |
 
 ---
 
-## 🗂️ 2. Estructura Organizacional (OU)
+## ⚙️ I. Implementación de Infraestructura (AD DS y DNS)
 
-Se creó una estructura ordenada para la administración:
+Se documenta la instalación y promoción del servidor a Controlador de Dominio, estableciendo el dominio principal: **`colegiodm.local`**.
 
-- AulaComputo  
-- Administrativos  
-- Estudiantes  
-- Docentes  
-- Grupos vinculados a cada área  
+* Roles de servidor instalados y verificados.
+* Configuración inicial y comprobación del servicio DNS.
+* Validación del nivel funcional del bosque y dominio.
 
-Incluye:
+## 🗂️ II. Diseño y Gestión de Unidades Organizativas (OU)
 
-- Usuarios organizados  
-- Grupos (Docentes-Matemática, Docentes-Ciencias, Estudiantes-Aula, etc.)  
+Se implementó una estructura jerárquica para la administración lógica de recursos y la aplicación eficiente de políticas.
 
----
+* **OUs Principales:** `Administrativos`, `Docentes`, `Estudiantes`, y `AulaComputo`.
+* **Gestión de Cuentas:** Documentación de usuarios, plantillas de inicio de sesión y la creación de grupos de seguridad vinculados a cada área.
+* **Plan de Grupos:** La carpeta **`/usuarios-grupos`** contiene el plan de diseño de seguridad (`Grupos_y_Permisos.md`) detallando la función de cada grupo.
 
-## 👥 3. Creación de Usuarios y Grupos
+## 🛡️ III. Políticas de Grupo (GPO)
 
-Cada OU contiene sus usuarios correspondientes.
+La carpeta **`/gpo`** documenta las políticas de seguridad implementadas para cumplir con los requisitos del entorno, especialmente en áreas de alto riesgo como el aula de cómputo.
 
-Se incluyen:
+### 🛑 Políticas Destacadas
 
-- Nombre del usuario  
-- Usuario de inicio de sesión  
-- (Las contraseñas administrativas no se muestran en capturas por seguridad)  
-- Grupos creados manualmente  
-- Evidencias mediante capturas  
+| Nombre de la Política | Objetivo de Seguridad | Estado de Documentación |
+| :--- | :--- | :--- |
+| **Bloqueo de USB** | Prevenir el uso de dispositivos de almacenamiento extraíble no autorizados. | Detallada en `gpo/Bloqueo_USB.md` |
+| **Restricción de Almacenamiento** | Limitar el acceso a unidades externas, reforzando la seguridad. | |
+| **Control de Navegación** | Restricción de descargas y uso de navegadores para entornos controlados. | |
 
----
-
-## 🛑 4. Políticas de Grupo (GPO)
-
-En la carpeta **/gpo** se muestran las políticas implementadas:
-
-### ✔ Bloqueo de USB  
-Evita que dispositivos USB no autorizados sean usados.
-
-### ✔ Restricción de almacenamiento extraíble  
-Limita acceso a unidades externas.
-
-### ✔ Control de navegación básica  
-Ejemplo: impedir descargas o restringir navegadores.
-
-### ✔ Verificación de GPO vinculada  
-Captura final que demuestra la aplicación correcta.
+* Se incluye la verificación final (`GPMC-Verificacion-GPO-Vinculada.png`) que demuestra la correcta aplicación y vinculación de las políticas.
 
 ---
 
-## 📸 5. Capturas de pantalla
+## 📖 Documentación Adicional
 
-Todas las imágenes se encuentran en la carpeta:
+### 🗒️ Notas Técnicas (`notas-tecnicas.md`)
 
-/screenshots
+Este archivo amplía la información conceptual y práctica del proyecto, actuando como un **manual de referencia** sobre:
 
+* Conceptos clave de Active Directory y Dominios.
+* Fundamentos y buenas prácticas de la herencia y aplicación de GPOs.
 
-Con nombres ordenados, por ejemplo:
+### 🖼️ Evidencias Gráficas (`screenshots/`)
 
-- 01-Panel-RolesInstalados.png  
-- 02-Asistente-ConfirmacionRolesADDS-DNS.png  
-- …  
-- 13-GPMC-Verificacion-GPO-Vinculada.png  
-
----
-
-## 📝 6. Documentación técnica adicional
-
-Archivo:
-
-notas-tecnicas.md
-
-
-Incluye explicaciones sobre:
-
-- Qué es AD DS  
-- Qué es un dominio  
-- Cómo funcionan las OU  
-- Qué es una GPO y cómo se aplica  
-- Buenas prácticas básicas de administración  
-
----
-
-## 🎯 Objetivo del proyecto
-
-Este repositorio busca demostrar habilidades en:
-
-- Administración de Active Directory  
-- Gestión de usuarios y grupos  
-- Organización mediante OU  
-- Implementación de políticas de seguridad  
-- Buenas prácticas en entornos Windows Server  
-
----
+Todas las evidencias visuales están ordenadas secuencialmente, desde la **`01-Panel-RolesInstalados.png`** hasta la **`13-GPMC-Verificacion-GPO-Vinculada.png`**, para facilitar el seguimiento paso a paso de la implementación.
